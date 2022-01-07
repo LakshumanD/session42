@@ -8,18 +8,29 @@ const StudentMentorService = {
       await stdmentorModel.save(function (err, data) {
         if (err) return res.send(err);
 
-        if (data) return res.send(`Student mentor assigned ${data}`);
+        if (data)
+          return res.send(
+            `Mentor Assigned to following student(s) ${data.StudentID}`
+          );
       });
     } catch (err) {
       return res.send(err);
     }
   },
-  async FetchStudent(req, res) {
+  async Detail(req, res) {
     try {
-      let result = await student.find();
-      return res.send(result);
-    } catch (err) {
-      return res.send(err);
+      //   const data = await studentMentorModel
+      //     .find()
+      //     .populate(["StudentID", "MentorID"]);
+
+      const data = await studentMentorModel
+        .find()
+        .populate({ path: "StudentID", select: "StudentID StudentName" })
+        .populate({ path: "MentorID", select: "MentorID MentorName" });
+      return res.send(data);
+      //console.log(data);
+    } catch (error) {
+      return res.send(error);
     }
   },
 };

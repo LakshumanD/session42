@@ -1,15 +1,17 @@
 const express = require("express");
 const Mongo = require("./mongo");
+const cors = require("cors");
 
 const mentorRoutes = require("./Routes/Mentor.Routes");
 const studentRoutes = require("./Routes/Student.Routes");
 const studentMentorRoutes = require("./Routes/StudentMentor.Routes");
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 Mongo.Connect();
 app.use("/Mentor", mentorRoutes);

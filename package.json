@@ -1,7 +1,7 @@
 {
   "name": "assign-mentor",
   "version": "1.0.0",
-  "description": "",
+  "description": "Assign mentor to the Student",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -9,6 +9,7 @@
   "author": "laks",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongoose": "^6.1.4"
   }
